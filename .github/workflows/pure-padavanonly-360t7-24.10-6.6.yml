@@ -12,12 +12,12 @@ env:
   REPO_URL: https://github.com/padavanonly/immortalwrt-mt798x-24.10
   REPO_BRANCH: openwrt-24.10-6.6
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: pure.config
+  CONFIG_FILE: cudy.config
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
-  TZ: Asia/Shanghai
+  TZ: Europe/Warsaw
 
 jobs:
   build:
@@ -117,8 +117,8 @@ jobs:
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
          time=$(date +%Y.%m.%d)
-         release_tag="360T7-ImmortalWrt-24.10-6.6-$time"
-         release_name="360T7-ImmortalWrt-24.10-6.6-$time"
+         release_tag="cudyap3000-ImmortalWrt-24.10-6.6-$time"
+         release_name="cudyap3000-ImmortalWrt-24.10-6.6-$time"
          echo "237源码构建
          默认网关：192.168.77.1
          登录密码：
