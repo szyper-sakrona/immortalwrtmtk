@@ -23,10 +23,10 @@ jobs:
     build:
     runs-on: ubuntu-22.04
     steps:
-    - name: 检查项目分支
+    - name: 1
       uses: actions/checkout@main
 
-    - name: 初始化编译环境
+    - name: 2
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
@@ -42,14 +42,14 @@ jobs:
         echo "FIRMWARE_VERSION=$(date +"%y%m%d")" >> $GITHUB_ENV
         echo "START_DATE=$(date +"%y%m%d")" >> $GITHUB_ENV
         
-    - name: 下载源码
+    - name: 3
       working-directory: /workdir
       run: |
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         
-    - name: 加载软件源
+    - name: 4
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
         chmod +x $DIY_P1_SH
