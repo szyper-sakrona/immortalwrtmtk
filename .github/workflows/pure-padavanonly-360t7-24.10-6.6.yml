@@ -31,7 +31,8 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
+        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+        sudo docker image prune --all --force
         sudo -E apt-get -qq update
         sudo -E apt-get -qq install build-essential gawk gcc-multilib g++-multilib gettext libncurses-dev python3-distutils zlib1g-dev
         sudo -E apt-get -qq autoremove --purge
@@ -40,7 +41,7 @@ jobs:
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
         echo "FIRMWARE_VERSION=$(date +"%y%m%d")" >> $GITHUB_ENV
-        echo "START_DATE=$(date +'%Y年%m月%d日 %H点%M分%S秒')" >> $GITHUB_ENV
+        echo "START_DATE=$(date +"%y%m%d")" >> $GITHUB_ENV
         
     - name: 下载源码
       working-directory: /workdir
