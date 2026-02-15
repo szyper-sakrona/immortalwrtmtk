@@ -1,4 +1,4 @@
-name: pure-padavanonly-360t7-24.10-6.6
+name: pure1
 
 on:
   repository_dispatch:
